@@ -1,58 +1,45 @@
 # Wake Challenge
 
-Application mobile de reveil nouvelle generation avec systeme de defis obligatoires.
+Application mobile de reveil par defis.
 
-## Installation
+## Lancer en 2 commandes
 
 ```bash
 npm install
+npm run dev
 ```
 
-## Lancer l'application
+Le navigateur s'ouvre automatiquement sur `http://localhost:8081`. Testez directement l'application dans le navigateur.
+
+## Tester sur mobile
 
 ```bash
 npx expo start
 ```
 
-Puis scannez le QR code avec l'application Expo Go (Android) ou l'appareil photo (iOS).
+Puis scannez le QR code avec **Expo Go** (Android) ou l'appareil photo (iOS).
 
 ## Fonctionnalites
 
-- Alarme programmable avec defis obligatoires
+- Alarme programmable
 - Defis : Calcul, Scanner, Photo, Mouvement, Recopie, Localisation
-- Ecran de reveil avec progression
-- Mode test pour development
-- Persistance locale des donnees
+- Ecran de reveil avec defis obligatoires
+- Persistance locale
 
-## Permissions
+## Structure
 
-- Notifications : pour les alarmes
-- Camera : pour les defis scanner/photo
-- Localisation : pour le defi de localisation
-- Capteurs : pour le defi de mouvement
-
-## Compilation Android
-
-```bash
-npx expo prebuild --platform android
-npx expo run:android
+```
+src/
+  contexts/AlarmContext.tsx  - Etat global
+  screens/                   - Ecrans
+  components/                - UI
+  utils/                     - Audio, notifications
+  storage/                   - Persistance
+  types/                     - Types
 ```
 
 ## Notes
 
-- Le son d'alarme doit etre place dans assets/alarm.mp3
-- Les defis Scanner, Photo, Mouvement et Localisation utilisent des simulations pour le prototype
-- Architecture prevue pour integration IA de vision (scanner/photo) et detection de mouvement reelle
-
-## Structure du projet
-
-```
-src/
-  contexts/     - Gestion d'etat (AlarmContext)
-  screens/      - Ecrans de l'application
-  components/   - Composants reutilisables
-  utils/        - Utilitaires (audio, notifications)
-  storage/      - Persistance locale
-  types/        - Types TypeScript
-  data/         - Donnees et templates de defis
-```
+- `npm run dev` = lancement web le plus rapide pour developper
+- Son d'alarme : ajouter un fichier `assets/alarm.mp3`
+- Defis camera/mouvement/localisation : simulations UI pretes pour integration native
